@@ -26,6 +26,7 @@
         <fastjson.version>1.2.58</fastjson.version>
         <freemarker.version>2.3.29</freemarker.version>
         <springfox-swagger2.version>2.9.2</springfox-swagger2.version>
+        <io.swagger.version>1.5.21</io.swagger.version>
         <commons-lang3.version>3.7</commons-lang3.version>
         <lombok.version>1.18.6</lombok.version>
     </properties>
@@ -128,6 +129,18 @@
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
             <version>${springfox-swagger2.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-annotations</artifactId>
+            <version>${io.swagger.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-models</artifactId>
+            <version>${io.swagger.version}</version>
         </dependency>
 
     </dependencies>

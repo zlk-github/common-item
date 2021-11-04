@@ -16,31 +16,31 @@
 
 提供权限、数据等相关管理，并给前端提供接口服务。
 
-### 1.1 MySql
+#### 1.1 MySql
 
     开源关系型数据库，存放数据，做数据持久化存储。提供事务，备份，容灾等功能。
 
-### 1.2 Redis
+#### 1.2 Redis
 
     内存型非关系型数据库。做数据缓存，存放Token做数据共享。存放高访问数据提高用户并发量。理论上可以达到10W QPS,一般可以达到4W QPS左右。
 
-### 1.3 jdk
+#### 1.3 jdk
 
     java运行环境
 
-### 1.4 Maven
+#### 1.4 Maven
 
     java打包环境
 
-### 1.5 SpringBoot2.0
+#### 1.5 SpringBoot2.0
 
     一个Spring+SpringMVC的简化开发版本，微服务设计。
 
-### 1.6 mybatis-plus
+#### 1.6 mybatis-plus
 
     ORM数据库持久层框架，用于与数据库交互。
 
-### 1.1 SpringSecurity实现OAuth2+JWT
+#### 1.7 SpringSecurity实现OAuth2+JWT
 
 SpringSecurity实现认证与授权。
 OAuth2做第三方登录，提供Token做为访问权限。（单点登录，一个系统登录，相关系统无需再次登录就可以进入其他系统）
@@ -48,7 +48,13 @@ JWT用来生成Token。
 
     综合当前系统需要，只需要使用到SpringSecurity+JWT。Redis用来缓存用户登录Token,退出登录清除Token即可。
 
-### 1. 拓展（分布式） -- 可不关注，感兴趣可以看一下相关资料
+#### 1.8 swagger2 
+
+    接口API在线文档生成。
+
+    启动后访问：http://localhost:8057/swagger-ui.html
+
+#### 1.9 拓展（分布式） -- 可不关注，感兴趣可以看一下相关资料
 
 
 ### 2 前端框架
@@ -56,6 +62,7 @@ JWT用来生成Token。
 做页面展示，调用后端接口做交互。
 
 #### 2.1 vue
+
 
 ### 3 中间件Nginx
 
