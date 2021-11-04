@@ -1,0 +1,50 @@
+server:
+  port: 8057
+
+################数据源################
+spring:
+  # mysql
+  datasource:
+    # 使用druid连接池
+    type: com.alibaba.druid.pool.DruidDataSource
+    # url: jdbc:mysql://192.168.2.201:3306/test?useUnicode=true&useSSL=false&characterEncoding=utf-8&serverTimezone=GMT%2B8
+    url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&useSSL=false&characterEncoding=utf-8&serverTimezone=GMT%2B8
+    username: root
+    password: 123456
+    # driver-class-name: com.mysql.jdbc.Driver
+    # 8.0版本
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  # redis
+  redis:
+    #数据库索引
+    database: 0
+    host: localhost
+    port: 6379
+    password:
+    jedis:
+      pool:
+        #最大连接数
+        max-active: 8
+        #最大阻塞等待时间(负数表示没限制)
+        max-wait: -1
+        #最大空闲
+        max-idle: 8
+        #最小空闲
+        min-idle: 0
+      #连接超时时间
+      timeout: 10000
+
+################mybatis-plus日志################
+# 配置slq打印日志
+mybatis-plus:
+  #原生配置
+  configuration:
+    #开启驼峰功能
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl  #关键部分。用来显示sql
+
+################swagger2################
+#是否激活 swagger true or false
+swagger:
+  enable: true

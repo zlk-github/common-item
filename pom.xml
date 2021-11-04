@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.5.RELEASE</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.zlk</groupId>
+    <artifactId>common-item</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <java.version>1.8</java.version>
+        <alibaba.druid.version>1.1.20</alibaba.druid.version>
+        <druid.version>1.1.20</druid.version>
+        <!-- <mysql-connector.version>5.1.38</mysql-connector.version>-->
+         <mysql-connector.version>8.0.11</mysql-connector.version>
+         <mybatis-plus.version>3.1.0</mybatis-plus.version>
+        <mybatis-plus-generator.version>3.2.0</mybatis-plus-generator.version>
+        <fastjson.version>1.2.58</fastjson.version>
+        <freemarker.version>2.3.29</freemarker.version>
+        <springfox-swagger2.version>2.9.2</springfox-swagger2.version>
+        <commons-lang3.version>3.7</commons-lang3.version>
+        <lombok.version>1.18.6</lombok.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- 引入Druid依赖，阿里巴巴所提供的数据源 -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+            <version>${alibaba.druid.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>${druid.version}</version>
+        </dependency>
+
+
+        <!--mybatis-plus-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>${mybatis-plus.version}</version>
+        </dependency>
+
+        <!--mybatis-plus代码生成器start-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-generator</artifactId>
+            <version>${mybatis-plus-generator.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.freemarker/freemarker -->
+        <dependency>
+            <groupId>org.freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+            <version>${freemarker.version}</version>
+        </dependency>
+        <!--mybatis-plus代码生成器end-->
+
+        <!-- 提供mysql驱动 -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql-connector.version}</version>
+        </dependency>
+
+        <!--redis-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+
+        <!--alibaba fastjson-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${springfox-swagger2.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger2 -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${springfox-swagger2.version}</version>
+        </dependency>
+
+    </dependencies>
+
+    <profiles>
+        <profile>
+            <!-- 开发环境 -->
+            <id>dev</id>
+            <properties>
+                <!-- 这里的属性名是随便取的，可以在后续配置中引用 -->
+                <profiles.dir>dev</profiles.dir>
+            </properties>
+            <!-- 是否默认 -->
+            <activation>
+                <activeByDefault>true</activeByDefault> <!--设置默认属性-->
+            </activation>
+        </profile>
+
+        <profile>
+            <!-- 测试环境 -->
+            <id>test</id>
+            <properties>
+                <!-- 这里的属性名是随便取的，可以在后续配置中引用 -->
+                <profiles.dir>test</profiles.dir>
+            </properties>
+            <!-- 是否默认 -->
+        </profile>
+
+        <profile>
+            <!-- 生产环境 -->
+            <id>prod</id>
+            <properties>
+                <profiles.dir>prod</profiles.dir>
+            </properties>
+        </profile>
+    </profiles>
+
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources/profiles/${profiles.dir}</directory>
+            </resource>
+            <resource>
+                <directory>src/main/resources/</directory>
+                <!-- **/*.properties 是指包括根目录或子目录所有properties类型的文件 -->
+                <!-- 排除dev、test目录下的文件 -->
+                <excludes>
+                    <exclude>generator/*</exclude>
+                    <exclude>profiles/*/*</exclude>
+                </excludes>
+            </resource>
+        </resources>
+
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
